@@ -81,6 +81,15 @@ describe('solver — naive small samples', () => {
       b: [0, 1, 2],
       targets: [0, 1, 2, 3, 4, 5, 6],
     },
+    {
+      // Regression: 31 crosses the 30-bit word boundary; packing words
+      // low-first used to mirror every value around word boundaries,
+      // reporting 31/32 unreachable and 1/2 reachable.
+      name: 'single shim crossing a word boundary',
+      a: [31],
+      b: [0, 1],
+      targets: [31, 32, 1, 2, 31],
+    },
   ]
 
   for (const spec of smallCases) {
