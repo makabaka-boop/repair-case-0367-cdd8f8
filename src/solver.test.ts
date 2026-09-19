@@ -76,6 +76,12 @@ describe('solver — naive small samples', () => {
       targets: [579, 578, 580, 0, 123, 456],
     },
     {
+      name: 'bitset word boundary values',
+      a: [31],
+      b: [0, 1],
+      targets: [31, 32, 1, 2, 31],
+    },
+    {
       name: 'adjacent small values',
       a: [0, 1, 2],
       b: [0, 1, 2],

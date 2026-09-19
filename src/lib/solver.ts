@@ -38,7 +38,7 @@ export function buildBitset(values: readonly number[], maxValue: number): bigint
     words[(v / WORD_BITS) | 0] |= (1 << (v % WORD_BITS)) >>> 0
   }
   let mask = 0n
-  for (let i = 0; i < wordCount; i++)
+  for (let i = wordCount - 1; i >= 0; i--)
     mask = (mask << BigInt(WORD_BITS)) | BigInt(words[i])
   return mask
 }
@@ -55,7 +55,7 @@ export function buildReversedBitset(values: readonly number[], maxValue: number)
     words[(r / WORD_BITS) | 0] |= (1 << (r % WORD_BITS)) >>> 0
   }
   let mask = 0n
-  for (let i = 0; i < wordCount; i++)
+  for (let i = wordCount - 1; i >= 0; i--)
     mask = (mask << BigInt(WORD_BITS)) | BigInt(words[i])
   return mask
 }
